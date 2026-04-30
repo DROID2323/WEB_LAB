@@ -1,0 +1,19 @@
+section {
+  text-align: center;
+  background-color: rgb(82, 88, 88);
+}
+section img{
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+  padding: 25px; 
+  outline: 5px solid yellow; 
+  margin: 20px; 
+}
+div {
+    background-color: rgb(255, 0, 255);
+    margin: 5px;
+  }
+span {
+    background-color: rgb(0, 255, 64);
+  }

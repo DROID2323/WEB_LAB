@@ -1,0 +1,27 @@
+body {
+  background-color: #a5a884;
+  text-align: center;
+}
+.asortiment {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.asor{
+  background: #462f7c70;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 7px;
+  width: 250px;
+  box-shadow: -10px -10px 10px rgb(187, 10, 10);
+}
+.asor img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+span {
+  color: rgba(123, 209, 115, 0.671);
+  font-weight: bold;
+}

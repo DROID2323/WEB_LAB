@@ -1,0 +1,72 @@
+.background-example {
+width: 500px;
+height: 300px;
+background-image: url('image-1.jpg');
+background-size: contain;
+background-position: center;
+}
+
+/* .background-gradient {
+  background: linear-gradient(to right, #ff7e5f, #feb47b); 
+  background-repeat: no-repeat;
+  min-height: 100vh; 
+}  */
+
+body { 
+  background-image: url('image-1.jpg'); 
+  background-repeat: no-repeat;
+  background-position: right top;  
+  background-attachment: fixed;     
+  background-size: 200px 200px; 
+}
+
+.block {
+  height: 500px;
+  border: 1px solid rgb(177, 14, 14);
+  margin: 10px;
+}
+
+.clip-example {
+width: 300px;
+height: auto;
+clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+.clip-example2 {
+width: 300px;
+height: auto;
+clip-path: polygon(16% 10%, 66% 33%, 100% 43%, 91% 12%, 76% 63%, 45% 76%, 19% 64%, 0% 43%, 34% 35%);
+}
+
+.masked {
+      width: 300px;
+      height: auto;
+      background: url('https://media.autoweek.nl/m/vwsy1y7bwv33_800.jpg') no-repeat center/cover;
+      -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg');
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+      mask-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+.text-mask {
+      font-size: 80px;
+      font-weight: bold;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg') no-repeat center/cover;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+@keyframes move {
+  from { transform: translateX(0); background: red; }
+  to { transform: translateX(100px); background: blue; }
+}
+
+.animated-box {
+  width: 100px;
+  height: 100px;
+  background: red;
+  animation: move 2s infinite alternate-reverse 2s;
+}

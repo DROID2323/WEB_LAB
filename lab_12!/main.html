@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>TruckUp</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+  <header>
+    <div class="logo">
+        <img src="images/image.png" alt="" class="logo-img">
+        <span class="logo-text">Truck Go</span>
+    </div>  
+    <nav class="menu">
+      <a href="main.html">Головна</a>
+      <a href="Pro_nas.html">Про нас</a>
+      <a href="Poslugi.html">Послуги</a>
+      <a href="routes.html">Маршрути</a>
+    </nav>
+
+    <div class="right-menu">
+      <a href="#">UA</a>
+      <a href="#" class="button1" id="authLink">Увійти | Зареєструватися</a>
+    </div> 
+  </header>
+<body>
+<!-- Модальне вікно -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+
+    <div class="auth-forms">
+      <!-- Логін -->
+      <div class="login-form">
+        <h2>Увійти</h2>
+        <form id="loginForm">
+          <label>Email</label>
+          <input type="email" name="Email" required>
+          <label>Пароль</label>
+          <input type="password" name="Пароль" required>
+          <button type="submit">Увійти</button>
+        </form>
+      </div>
+
+      <!-- Реєстрація -->
+      <div class="register-form">
+        <h2>Зареєструватися</h2>
+        <form id="registerForm">
+          <label>Ім’я</label>
+          <input type="text" name="Ім’я" required>
+          <label>Email</label>
+          <input type="email" name="Email" required>
+          <label>Пароль</label>
+          <input type="password" name="Пароль" required>
+          <button type="submit">Зареєструватися</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Banner -->
+  <section class="banner">
+    <h1>ТРАНСПОРТНА<br>КОМПАНІЯ</h1>
+    <a class="button" href="#consultForm"><b>Отримати консультацію</b></a>
+  </section>  
+
+  <!-- About -->
+  <section class="about">
+    <h2>ПРО НАС</h2>
+    <p><b>● TrackGo — сучасна транспортна компанія, що спеціалізується на швидкій та надійній доставці вантажів по всій Україні. 
+    <br>● Ми поєднуємо професійний підхід, гнучкі тарифи та сучасний автопарк, щоб забезпечити клієнтам максимальний комфорт.
+    <br>● Наші послуги охоплюють як індивідуальні замовлення, так і комплексні логістичні рішення для бізнесу.</b></p>
+  </section>
+
+  <!-- Advantages -->
+  <section class="advantages">
+    <h2>НАШІ ПЕРЕВАГИ</h2>
+  <div class="adv-item">
+    <img src="images/image copy 2.png" alt="Швидка доставка">
+    <p>Швидка доставка</p>
+  </div>
+  <div class="adv-item">
+    <img src="images/image copy 3.png" alt="Надійність">
+    <p>Надійність</p>
+  </div>
+  <div class="adv-item">
+    <img src="images/image copy 4.png" alt="Всюди, де ви є">
+    <p>Всюди, де ви є</p>
+  </div>
+  <div class="adv-item">
+    <img src="images/image copy 5.png" alt="Підтримка 24/7">
+    <p>Підтримка 24/7</p>
+  </div>
+  <div class="adv-item">
+    <img src="images/image copy.png" alt="Гнучкі тарифи">
+    <p>Гнучкі тарифи</p>
+  </div>
+  </div>
+</section>
+
+
+  <!-- Contact Form -->
+<section id="consultForm" class="contact-section">
+  <div class="contact-container">
+    <!-- Ліва частина: форма -->
+    <form class="contact-form">
+      <h2>ЗАЛИШИЛИСЬ ПИТАННЯ?</h2>
+      <input type="text" placeholder="Ім’я" required>
+      <input type="tel" placeholder="+380 (XX) XXX-XX-XX" required>
+      <textarea placeholder="Коментар"></textarea>
+      <button type="submit" class="button"><h3><b>Отримати консультацію</b></h3></button>
+    </form>
+
+    <!-- Права частина: фото -->
+    <div class="contact-image">
+      <img src="images/image copy 7.png" alt="Truck Go Logistics">
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- Ліва колонка -->
+    <div class="footer-column">
+      <a href="popular_faq .html"><p>Новини в компанії</p></a>
+      <a href="popular_faq .html"><p>Популярні запитання</p></a>
+    </div>
+
+    <!-- Права колонка -->
+    <div class="footer-column">
+      <p>+380 (67) 241-13-55</p>
+      <p>+380 (95) 134-23-42</p>
+    </div>
+
+    <div class="footer-column">
+      <p>TrackGoInfo@gmail.com</p>
+      <p>TrackGo@gmail.com</p>
+    </div>
+
+    <div class="footer-column">
+      <p>м. Львів, вул.Транспортна, 12</p>
+      <p>м. Київ, вул Крайняська, 7</p>
+    </div>
+      
+    <!-- Соцмережі -->
+    <div class="footer-column">
+      <img src="icons/image.png" alt="telegram">
+      <img src="icons/image copy.png" alt="instagram">
+      <img src="icons/image copy 2.png" alt="facebook">
+      <img src="icons/image copy 3.png" alt="viber">
+    </div>
+  </div>
+
+  <!-- Копірайт -->
+  <div class="footer-bottom">
+    <p>© 2026 TrackGo</p>
+  </div>
+</footer>
+
+
+ <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+.faq {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 36px;
+  background:#d8d8d8;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  font-weight: 700; /* весь текст жирний */
+  color: #938263 
+}
+
+/* Заголовок */
+.faq h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #a08f70;
+}
+.faq h2::after{
+   margin: 0 auto;
+  content: "";
+  display: block;
+  width: 570px;
+  border-bottom: #938263 2px solid;
+}
+
+/* Одна "картка" питання */
+.faq-item {
+  margin: 12px 0;
+  border-radius: 10px;
+  background: #646262;
+  border: 1px solid #e6efee;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* Кнопка-питання (замість summary) */
+.faq-summary {
+  width: 100%;
+  text-align: left;
+  padding: 16px 18px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 12px;
+}
+
+/* Стрілочка */
+.arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(.2,.9,.2,1);
+  color: #938263;
+  font-size: 0.95rem;
+}
+
+/* Контент відповіді — прихований за замовчуванням */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.45s ease, padding 0.45s ease;
+}
+
+/* Вміст відповіді (параграф) */
+.faq-content p {
+  margin: 12px 0 18px;
+  color: rgb(255, 255, 255);
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+/* Коли елемент відкритий — даємо висоту і показуємо текст */
+.faq-item.open .faq-content {
+  max-height: 400px; /* достатньо для відповіді; при потребі збільшити */
+  opacity: 1;
+  padding: 12px 18px 18px;
+}
+
+/* Повертаємо стрілку при відкритті */
+.faq-item.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* Hover ефект для картки */
+.faq-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* Додаткові питання спочатку приховані (але не display:none — щоб анімація працювала) */
+.faq-item.extra {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.5s ease, opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+/* Коли контейнер має клас show-extra — показуємо додаткові питання */
+.faq.show-extra .faq-item.extra {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Кнопка */
+.faq-actions {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.faq-btn {
+  padding: 12px 26px;
+  border-radius: 10px;
+  border: none;
+  background: #938263;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.faq-btn:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Адаптив */
+@media (max-width:720px){
+  .faq { padding: 20px; }
+  .faq-content p { font-size: 0.95rem; }
+}

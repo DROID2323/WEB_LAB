@@ -1,0 +1,90 @@
+.asortiment {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-image: url('https://bigfoto.name/photo/uploads/posts/2023-10/1697527006_bigfoto-name-p-gipermarket-tekhniki-14.jpg');
+  background-size: cover;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Lobster', cursive; 
+  text-align: center;
+  color: rgb(112, 19, 116);
+  text-shadow: 3px 3px 5px rgba(86, 204, 17, 0.815);
+} 
+
+.asor {
+  background: #cccccc;
+  outline: 5px solid rgb(29, 164, 173);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 25px;
+  width: 250px;
+  height: 350px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.asor img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.asor h2 {
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+span {
+  background-color: lightyellow;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: #22a39d;
+}
+
+th, td {
+  border: 3px solid #1b2d7e;
+  padding: 10px;
+  text-align: center;
+}
+
+td img {
+  width: 100px;
+  height: 100px;
+}
+
+a:link {
+  color: rgb(202, 143, 202);
+  font-style: italic;
+}
+
+a:visited {
+  color: rgb(160, 28, 28);
+  font-style: italic;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: black;
+  font-style: italic;
+  background-color: lightblue;
+}
+
+a:active {
+  color: blue;
+  font-style: italic;
+  text-decoration: underline;
+  background-color: yellow;
+}

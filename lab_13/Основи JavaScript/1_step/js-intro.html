@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Знайомство з JS</title>
+</head>
+<body>
+	<div>
+		<img src="images/photo1.jpg">
+	</div>
+	<button onclick="shownextPhoto()">Наступне фото</button>
+
+	<script>
+		var photos = ["images/photo2.jpg", "images/photo3.jpg", "images/photo4.jpg", "images/photo5.jpg"];
+		var currentPhoto = 0;
+
+		function shownextPhoto() {
+			currentPhoto++;
+			if (currentPhoto >= photos.length) {
+				currentPhoto = 0;
+			}
+			document.querySelector("img").src = photos[currentPhoto];
+		}
+	</script>
+</body>
+</html>

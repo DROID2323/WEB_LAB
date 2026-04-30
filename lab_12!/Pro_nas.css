@@ -1,0 +1,171 @@
+.company-history, .company-values, .mission-vision, .stats, .team, .testimonials, .cta {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.company-history{ 
+  margin-top : 30px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.comp{
+    text-align : center;
+    font-size: 48px;
+    margin-bottom: 20px;
+    color:  #938263;
+}
+
+.comp::after {
+  content: "";
+  display: block;
+  width: 750px;
+  border-bottom: #938263 2px solid;
+  margin: 0 auto; /* центрируем линию */
+  margin-top: 5px; /* отступ между текстом и линией */
+}
+
+.company-history p, .company-values p {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #acacac;
+}
+
+/* Досягнення */
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.stat {
+  background: #515151 ;
+  padding: 20px;  
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.stats h2 {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 25px;
+  color:#938263;
+}
+.stats h2::after {
+  content: "";
+  display: block;
+  width: 800px;
+  border-bottom: #938263 2px solid;
+  margin: 0 auto; /* центрируем линию */
+  margin-top: 5px; /* отступ между текстом и линией */
+}
+.stat {
+  padding: 20px;
+  border-radius: 10px;
+  width: 180px;
+  height: 120px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+.stat h3 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #42a32f;
+}
+
+.stat p {
+  font-size: 18px;
+  color: #c4c1c1;
+  margin: 0;
+}
+/* Відгуки */
+.testimonial-wrapper {
+  max-width: 1000px;          /* показуємо 3 картки */
+  margin: 0 auto;
+  overflow: hidden;           /* приховує зайве */
+  overflow-x: auto;           /* дозволяє ручний скрол */
+  scroll-snap-type: x mandatory;
+  padding-bottom: 15px;
+}
+
+.testimonial-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.testimonial {
+  flex: 0 0 300px;          /* ширина картки */
+  height: 150px;            /* однакова висота */
+  background:#dabe8c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;            /* робимо flex для вирівнювання */
+  flex-direction: column;
+  justify-content: space-between; /* текст зверху, автор знизу */
+}
+
+.testimonial-title {
+  text-align: left;
+  font-size: 36px;
+  color: #938263;
+  margin-bottom: 30px;
+}
+
+.testimonial-title::after {
+  content: "";
+  display: block;
+  width: 570px;
+  border-bottom: #938263 2px solid;
+}
+/* Стиль для скролбару */
+.testimonial-slider::-webkit-scrollbar {
+  height: 8px;
+}
+.testimonial-slider::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 4px;
+}
+.testimonial-slider::-webkit-scrollbar-thumb {
+  background: #938263;
+  border-radius: 4px;
+}
+
+
+/* CTA блок */
+.cta {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 20px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+.cta .button {
+  background: #f5deb3;
+  color: #8b8476;
+  padding: 5px 55px; 
+  transition: 0.3s;
+}
+.cta .button:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+
+/* Адаптивність */
+@media (max-width: 980px){
+  .testimonial{ flex: 0 0 280px; }
+  .testimonial-slider{ gap: 16px; }
+}
+@media (max-width: 640px){
+  .testimonial{ flex: 0 0 85%; } /* одна картка на мобайлі, по центру */
+  .testimonial-slider{ justify-content: flex-start; padding-left: 10px; }
+  .testimonial-wrapper{ padding-bottom: 18px; }
+}

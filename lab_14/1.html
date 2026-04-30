@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Арифметичні оператори та рядки</title>
+    <script src="1.js"></script>
+</head>
+<body>
+
+<button onclick="showMessage()">Натисни тут</button>
+<button onclick="openNewWindow()">Відкрити вікно</button>
+
+<script>
+
+function showMessage() {
+alert("Це спливаюче вікно.");
+}
+function openNewWindow() {
+window.open("https://www.google.com", "_blank", "width=400,height=300");
+}
+</script>
+
+
+<button onclick="confirmMessage()">Перевірка</button>
+
+<script>
+
+function confirmMessage() {
+let result = confirm("Ви впевнені?");
+if (result) {
+alert("OK.");
+} else {
+alert("Cancel.");
+ }
+}
+</script>
+
+<button onclick="promptMessage()">Введіть ім'я</button> 
+
+<script>
+
+function showAlert() {
+alert("Це повідомлення!");
+}
+function promptMessage() {
+let name = prompt("Як вас звати?"); //Метод prompt() дозволяє отримати дані від
+користувача.
+alert("Вітаю, " + name + "!");
+}
+</script>
+
+</body>
+</html>
