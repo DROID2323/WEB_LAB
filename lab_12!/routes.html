@@ -20,77 +20,212 @@
     </nav>
 
     <div class="right-menu">
-      <a href="#">UA</a>
+      <button class="burger" aria-label="Відкрити меню" aria-expanded="false">☰</button>
       <a href="#" class="button1" id="authLink">Увійти | Зареєструватися</a>
     </div> 
   </header>
 <body>
-  
- <div class="page-hero hero-bg">
-  <h1>Маршрути та локації</h1>
-  <p>Ми доставляємо по всій Україні та за кордон.</p>
+<!-- Модальне вікно -->
+<div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document">
+    <button id="closeModal" class="close" aria-label="Закрити модальне вікно">&times;</button>
+
+    <!-- Таби керування -->
+    <div class="auth-tabs" role="tablist" aria-label="Авторизація">
+      <button class="tab-btn active" data-target="loginPanel" role="tab" aria-selected="true" aria-controls="loginPanel">Увійти</button>
+      <button class="tab-btn" data-target="registerPanel" role="tab" aria-selected="false" aria-controls="registerPanel">Зареєструватись</button>
+    </div>
+
+    <!-- Контейнер форм -->
+    <div class="auth-forms">
+
+      <!-- Логін -->
+      <div id="loginPanel" class="panel" role="tabpanel" aria-hidden="false">
+        <h2>Увійти</h2>
+        <form id="loginForm" novalidate>
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" name="email" required autocomplete="email">
+          <label for="loginPassword">Пароль</label>
+          <input id="loginPassword" type="password" name="password" required autocomplete="current-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Увійти</button>
+            <button type="button" class="btn link" data-switch="registerPanel">Немає акаунту? Зареєструватись</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Реєстрація -->
+      <div id="registerPanel" class="panel hidden" role="tabpanel" aria-hidden="true">
+        <h2>Зареєструватись</h2>
+        <form id="registerForm" novalidate>
+          <label for="regName">Ім’я</label>
+          <input id="regName" type="text" name="name" required autocomplete="name">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" type="email" name="email" required autocomplete="email">
+          <label for="regPassword">Пароль</label>
+          <input id="regPassword" type="password" name="password" required autocomplete="new-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Зареєструватись</button>
+            <button type="button" class="btn link" data-switch="loginPanel">Вже є акаунт? Увійти</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </div>
 
-<div class="routes">
-  <h2>Популярні маршрути</h2>
-  <div class="route-card">
-    <img src="images/lviv-kyiv.jpg" alt="Львів Київ">
-    <div>
-      <h3>Львів → Київ</h3>
-      <p>Щоденні рейси, GPS‑контроль, середній час доставки — 24 години.</p>
+
+
+  
+<div class="routes-wrap">
+  <div class="routes-head">
+    <h1><b>Популярні маршрути</b></h1>
+    <div class="controls">
+      <input type="text" id="route-search" placeholder="Пошук маршруту або міста" />
+      <select id="route-filter">
+        <option value="all">Усі</option>
+        <option value="domestic">По Україні</option>
+        <option value="international">Міжнародні</option>
+        <option value="express">Експрес</option>
+      </select>
     </div>
   </div>
-  <div class="route-card">
-    <img src="images/lviv-warsaw.jpg" alt="Львів Варшава">
-    <div>
-      <h3>Львів → Варшава</h3>
-      <p>Міжнародна доставка з митним оформленням, 2–4 дні.</p>
+
+  <div class="routes-grid" id="routesGrid">
+    <div class="route-card" data-type="domestic" data-from="Львів" data-to="Київ">
+      <img src="https://media.istockphoto.com/id/674322184/photo/tarpaulin-truck-driving-on-highway.jpg?s=612x612&w=0&k=20&c=fZKKBCDq1hQXnM6kvMG1g1sIg3YqSku0m5yaFVXm0gA=" alt="Львів — Київ">
+      <div class="route-info">
+        <h3>Львів → Київ</h3>
+        <p class="muted">Щоденні рейси · GPS · 24 год</p>
+        <div class="meta">
+          <span>Час: <b>24 год</b></span>
+          <span>Частота: <b>щодня</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
     </div>
-  </div>
-  <div class="route-card">
-    <img src="images/lviv-odesa.jpg" alt="Львів Одеса">
-    <div>
-      <h3>Львів → Одеса</h3>
-      <p>Регулярні перевезення вантажів, середній час доставки — 48 годин.</p>
+
+    <div class="route-card" data-type="international" data-from="Львів" data-to="Варшава">
+      <img src="https://ts1.mm.bing.net/th?id=OIP.7x9rEdRFTJxGBcumBY6jbwHaEC&pid=15.1&o=7&rm=3" alt="Львів — Варшава">
+      <div class="route-info">
+        <h3>Львів → Варшава</h3>
+        <p class="muted">Митний супровід · 2–4 дні</p>
+        <div class="meta">
+          <span>Час: <b>2–4 дні</b></span>
+          <span>Тариф: <b>від 1000 грн</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
+    </div>
+
+    <div class="route-card" data-type="domestic" data-from="Львів" data-to="Одеса">
+      <img src="https://img.freepik.com/free-photo/long-haul-semi-trailer-truck-driving-multi-lane-highway-sunset_23-2152031809.jpg" alt="Львів — Одеса">
+      <div class="route-info">
+        <h3>Львів → Одеса</h3>
+        <p class="muted">Регулярні рейси · 48 год</p>
+        <div class="meta">
+          <span>Час: <b>48 год</b></span>
+          <span>Частота: <b>через день</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
+    </div>
+
+    <div class="route-card" data-type="express" data-from="Київ" data-to="Львів">
+      <img src="https://media.istockphoto.com/photos/four-lanes-highway-transit-with-lorry-trucks-picture-id1287684684?k=20&m=1287684684&s=612x612&w=0&h=q-MtkUws5tMtYhFCkN8Dd3z-IRUGDPmioI3sAWm4SSc=" alt="Київ — Львів">
+      <div class="route-info">
+        <h3>Київ → Львів (Експрес)</h3>
+        <p class="muted">Термінова доставка · в той самий день</p>
+        <div class="meta">
+          <span>Час: <b>до 12 год</b></span>
+          <span>Опція: <b>експрес</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
+    </div>
+
+    <div class="route-card" data-type="international" data-from="Київ" data-to="Берлін">
+      <img src="https://ts1.mm.bing.net/th?id=OIP.Gvk5uG8y9n5WhMX-_33zLwHaHa&pid=15.1&o=7&rm=3" alt="Київ — Берлін">
+      <div class="route-info">
+        <h3>Київ → Берлін</h3>
+        <p class="muted">Міжнародна доставка · 3–5 днів</p>
+        <div class="meta">
+          <span>Час: <b>3–5 днів</b></span>
+          <span>Тариф: <b>від 1200 грн</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
+    </div>
+
+    <div class="route-card" data-type="domestic" data-from="Одеса" data-to="Київ">
+      <img src="https://ts1.mm.bing.net/th?id=OIP.vEqORhwqGgABBL0l2EcdmQHaE7&pid=15.1&o=7&rm=3" alt="Одеса — Київ">
+      <div class="route-info">
+        <h3>Одеса → Київ</h3>
+        <p class="muted">Регулярні рейси · 36–48 год</p>
+        <div class="meta">
+          <span>Час: <b>36–48 год</b></span>
+          <span>Частота: <b>через день</b></span>
+        </div>
+        <button class="btn small view-route">Деталі</button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="locations">
-  <h2>Наші офіси</h2>
-  <div class="location-card">
-    <img src="images/lviv-office.jpg" alt="Львів офіс">
-    <h3>Головний офіс — Львів</h3>
-    <p>вул. Промислова, 15</p>
-  </div>
-  <div class="location-card">
-    <img src="images/kyiv-office.jpg" alt="Київ офіс">
-    <h3>Філія — Київ</h3>
-    <p>вул. Велика Васильківська, 20</p>
-  </div>
-  <div class="location-card">
-    <img src="images/odesa-office.jpg" alt="Одеса офіс">
-    <h3>Філія — Одеса</h3>
-    <p>вул. Дерибасівська, 10</p>
+  <h1><b>Наші офіси</b></h1>
+  <div class="locations-grid">
+    <div class="location-card">
+      <img src="https://ts2.mm.bing.net/th?id=OIP.hvtatpSj17LzaDbVYwrJ6wHaFw&pid=15.1&o=7&rm=3"alt="Львів офіс">
+      <h3>Головний офіс — Київ</h3>
+      <p>вул. Промислова, 15 · 
+<p>Графік: 9:00–19:00</p>
+    </div>
+
+    <div class="location-card">
+      <img src="https://archello.s3.eu-central-1.amazonaws.com/images/2020/01/20/Ellement-Pilana-Karbid-BoysPlayNice-01.1579517042.1075.jpg" alt="Київ офіс">
+      <h3>Філія — Львів</h3>
+      <p>вул. Велика Васильківська, 20 · <p>Графік: 9:00–18:00</p>
+    </div>
+
+    <div class="location-card">
+      <img src="https://thumbs.dreamstime.com/b/modern-stylish-business-building-exterior-8597869.jpg" alt="Одеса офіс">
+      <h3>Філія — Одеса</h3>
+      <p>вул. Дерибасівська, 10 · <p> Графік: 9:00–17:00</p>
+    </div>
   </div>
 </div>
 
-<div class="advantages">
-  <h2>Чому обирають TrackGo</h2>
-  <ul>
-    <li>30+ міст України</li>
-    <li>Міжнародні маршрути</li>
-    <li>Експрес‑доставка</li>
-    <li>Страхування вантажу</li>
-  </ul>
+<div class="map-section">
+  <div class="map-left">
+    <h2><b>Інтерактивна карта</b></h2>
+    <div class="map-box" id="mapBox">
+      <img src="images/map.png" alt="Карта маршрутів">
+    </div>
+  </div>
+
+  <aside class="map-side" id="mapSide">
+    <h3><b>Швидка інформація</b></h3>
+    <ul>
+      <li><b>Активні маршрути:</b> 56</li>
+      <li><b>Міста покриття:</b> 30+</li>
+      <li><b>Міжнародні:</b> 12</li>
+      <li><b>Експрес‑опції:</b> Так</li>
+    </ul>
+  </aside>
 </div>
 
-<div class="map">
-  <h2>Інтерактивна карта</h2>
-  <img src="images/map-placeholder.jpg" alt="Карта маршрутів">
+<!-- Модал деталі маршруту -->
+<div id="routeModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h3 id="modalTitle">Маршрут</h3>
+    <p id="modalDesc">Опис маршруту</p>
+    <div id="modalMeta"></div>
+    <button class="btn" id="modalOrder">Замовити цей маршрут</button>
+  </div>
 </div>
-
-
 
   <!-- Footer -->
   <footer class="footer">
@@ -98,8 +233,8 @@
 
     <!-- Ліва колонка -->
     <div class="footer-column">
-      <a href="popular_faq .html"><p>Новини в компанії</p></a>
-      <a href="popular_faq .html"><p>Популярні запитання</p></a>
+      <a href="new_info.html"><p>Новини в компанії</p></a>
+      <a href="popular_faq.html"><p>Популярні запитання</p></a>
     </div>
 
     <!-- Права колонка -->
@@ -128,11 +263,12 @@
   </div>
 
   <!-- Копірайт -->
-  <div class="footer-bottom">
+    <div class="footer-bottom">
     <p>© 2026 TrackGo</p>
   </div>
 </footer>
-
-
+<script src="js/burger.js"></script>
+<script src="js/login.js"></script>
+<script src="js/det.js"></script>
 </body>
-</html>
+</html> 

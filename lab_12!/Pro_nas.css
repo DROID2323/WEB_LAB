@@ -21,8 +21,8 @@
   display: block;
   width: 750px;
   border-bottom: #938263 2px solid;
-  margin: 0 auto; /* центрируем линию */
-  margin-top: 5px; /* отступ между текстом и линией */
+  margin: 0 auto; 
+  margin-top: 5px; 
 }
 
 .company-history p, .company-values p {
@@ -59,8 +59,8 @@
   display: block;
   width: 800px;
   border-bottom: #938263 2px solid;
-  margin: 0 auto; /* центрируем линию */
-  margin-top: 5px; /* отступ между текстом и линией */
+  margin: 0 auto; 
+  margin-top: 5px; 
 }
 .stat {
   padding: 20px;
@@ -159,13 +159,117 @@
 }
 
 
-/* Адаптивність */
-@media (max-width: 980px){
-  .testimonial{ flex: 0 0 280px; }
-  .testimonial-slider{ gap: 16px; }
+
+/* ===== Mobile tweaks for Pro_nas (<=375px) ===== */
+@media (max-width: 375px) {
+
+  /* Загальні контейнери */
+  .company-history,.company-values,.mission-vision,.stats,.team,.testimonials,.cta {
+    padding: 18px 12px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  /* Заголовок сторінки */
+  .comp {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #938263;
+  }
+  .comp::after {
+    width: 250px;
+    margin-top: 6px;
+  }
+
+  /* Текст історії компанії */
+  .company-history {
+    padding: 14px;
+    border-radius: 12px;
+  }
+.company-history p {
+  font-size: 14px;
+  color: #9e9e9e;
+  font-weight: 700;
+  margin-bottom: 10px;
+  }
+
+  /* Досягнення (статистика) */
+.stats h2 { 
+  font-size: 20px;
+  margin-bottom: 14px;
 }
-@media (max-width: 640px){
-  .testimonial{ flex: 0 0 85%; } /* одна картка на мобайлі, по центру */
-  .testimonial-slider{ justify-content: flex-start; padding-left: 10px; }
-  .testimonial-wrapper{ padding-bottom: 18px; }
+.stats h2::after { 
+  width: 260px; 
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  justify-items: center;
+}
+.stat {
+  width: 160px;
+  height: auto;
+  padding: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+.stat h3 { 
+  font-size: 28px;
+  margin-bottom: 6px; 
+}
+.stat p { 
+  font-size: 14px; 
+}
+
+  /* Відгуки — слайдер */
+.testimonial-title { 
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.testimonial-title::after { 
+  width: 320px; 
+}
+
+.testimonial-wrapper {
+  padding-bottom: 12px;
+  margin: 0 auto;
+  }
+  .testimonial-slider {
+    gap: 12px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .testimonial {
+    flex: 0 0 280px; /* трохи вужче для мобільного */
+    height: auto;
+    min-height: 140px;
+    padding: 14px;
+    border-radius: 8px;
+  }
+  .testimonial p { font-size: 14px; line-height: 1.4; }
+  .testimonial span { font-size: 13px; color: #333; }
+
+  /* Скролбар — тонший і ненав'язливий */
+  .testimonial-slider::-webkit-scrollbar { height: 6px; }
+  .testimonial-slider::-webkit-scrollbar-thumb { background: rgba(147,130,99,0.9); border-radius: 4px; }
+
+  /* CTA */
+  .cta { padding: 18px 12px; border-radius: 10px; }
+  .cta h2 { font-size: 20px; margin-bottom: 8px; }
+  .cta p { font-size: 14px; margin-bottom: 12px; }
+  .cta .button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  /* Footer column spacing (якщо footer тут, але ти казав він адаптований) */
+  .footer-container { gap: 10px; padding: 12px; }
+
+  /* Додаткові оптимізації: уникнути горизонтального скролу */
+  html, body { overflow-x: hidden; }
 }

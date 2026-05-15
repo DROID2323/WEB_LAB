@@ -17,14 +17,14 @@
   color: #a08f70;
 }
 .faq h2::after{
-   margin: 0 auto;
+  margin: 0 auto;
   content: "";
   display: block;
   width: 570px;
   border-bottom: #938263 2px solid;
 }
 
-/* Одна "картка" питання */
+
 .faq-item {
   margin: 12px 0;
   border-radius: 10px;
@@ -34,8 +34,9 @@
   transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-/* Кнопка-питання (замість summary) */
 .faq-summary {
+  font-weight: bold;
+  color: #ffffff;
   width: 100%;
   text-align: left;
   padding: 16px 18px;
@@ -49,50 +50,43 @@
   gap: 12px;
 }
 
-/* Стрілочка */
+
 .arrow {
   display: inline-block;
   transition: transform 0.35s cubic-bezier(.2,.9,.2,1);
   color: #938263;
-  font-size: 0.95rem;
 }
 
-/* Контент відповіді — прихований за замовчуванням */
+
 .faq-content {
   max-height: 0;
   overflow: hidden;
-  padding: 0 18px;
-  opacity: 0;
   transition: max-height 0.5s ease, opacity 0.45s ease, padding 0.45s ease;
 }
 
-/* Вміст відповіді (параграф) */
 .faq-content p {
   margin: 12px 0 18px;
   color: rgb(255, 255, 255);
-  line-height: 1.5;
-  font-weight: 700;
 }
 
-/* Коли елемент відкритий — даємо висоту і показуємо текст */
+
 .faq-item.open .faq-content {
-  max-height: 400px; /* достатньо для відповіді; при потребі збільшити */
+  max-height: 400px; 
   opacity: 1;
   padding: 12px 18px 18px;
 }
 
-/* Повертаємо стрілку при відкритті */
+
 .faq-item.open .arrow {
   transform: rotate(180deg);
 }
 
-/* Hover ефект для картки */
 .faq-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
-/* Додаткові питання спочатку приховані (але не display:none — щоб анімація працювала) */
+
 .faq-item.extra {
   max-height: 0;
   opacity: 0;
@@ -101,7 +95,6 @@
   pointer-events: none;
 }
 
-/* Коли контейнер має клас show-extra — показуємо додаткові питання */
 .faq.show-extra .faq-item.extra {
   max-height: 500px;
   opacity: 1;
@@ -109,7 +102,6 @@
   pointer-events: auto;
 }
 
-/* Кнопка */
 .faq-actions {
   text-align: center;
   margin-top: 18px;
@@ -132,7 +124,20 @@
 }
 
 /* Адаптив */
-@media (max-width:720px){
-  .faq { padding: 20px; }
-  .faq-content p { font-size: 0.95rem; }
+@media (max-width:375px){
+  
+.faq{
+  max-width: 355px;
+}
+.faq h2{
+  font-size: 20px
+}
+.faq-content {
+  font-size: 14px;
+}
+.faq h2::after{
+  max-width: 280px;
+}
+
+
 }

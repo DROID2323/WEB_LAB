@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>TruckUp</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="new_info.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+</head>
+  <header>
+    <div class="logo">
+        <img src="images/image.png" alt="" class="logo-img">
+        <span class="logo-text">Truck Go</span>
+    </div>  
+    <nav class="menu">
+      <a href="main.html">Головна</a>
+      <a href="Pro_nas.html">Про нас</a>
+      <a href="Poslugi.html">Послуги</a>
+      <a href="routes.html">Маршрути</a>
+    </nav>
+
+    <div class="right-menu">
+      <button class="burger" aria-label="Відкрити меню" aria-expanded="false">☰</button>
+      <a href="#" class="button1" id="authLink">Увійти | Зареєструватися</a>
+    </div> 
+  </header>
+<body>
+
+ <!-- Модальне вікно -->
+<div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document">
+    <button id="closeModal" class="close" aria-label="Закрити модальне вікно">&times;</button>
+
+    <!-- Таби керування -->
+    <div class="auth-tabs" role="tablist" aria-label="Авторизація">
+      <button class="tab-btn active" data-target="loginPanel" role="tab" aria-selected="true" aria-controls="loginPanel">Увійти</button>
+      <button class="tab-btn" data-target="registerPanel" role="tab" aria-selected="false" aria-controls="registerPanel">Зареєструватись</button>
+    </div>
+
+    <!-- Контейнер форм -->
+    <div class="auth-forms">
+
+      <!-- Логін -->
+      <div id="loginPanel" class="panel" role="tabpanel" aria-hidden="false">
+        <h2>Увійти</h2>
+        <form id="loginForm" novalidate>
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" name="email" required autocomplete="email">
+          <label for="loginPassword">Пароль</label>
+          <input id="loginPassword" type="password" name="password" required autocomplete="current-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Увійти</button>
+            <button type="button" class="btn link" data-switch="registerPanel">Немає акаунту? Зареєструватись</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Реєстрація -->
+      <div id="registerPanel" class="panel hidden" role="tabpanel" aria-hidden="true">
+        <h2>Зареєструватись</h2>
+        <form id="registerForm" novalidate>
+          <label for="regName">Ім’я</label>
+          <input id="regName" type="text" name="name" required autocomplete="name">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" type="email" name="email" required autocomplete="email">
+          <label for="regPassword">Пароль</label>
+          <input id="regPassword" type="password" name="password" required autocomplete="new-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Зареєструватись</button>
+            <button type="button" class="btn link" data-switch="loginPanel">Вже є акаунт? Увійти</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+ <!-- HERO -->
+  <div class="news-hero">
+    <div class="container">
+      <h1>Новини компанії</h1>
+      <p>Останні оновлення: проєкти, відкриття філій, кейси та досягнення.</p>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="news-wrap container">
+    <div class="news-main">
+
+      <!-- Featured -->
+      <article class="featured-article">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a2b3c" alt="Команда на нараді">
+        <div class="featured-body">
+          <div class="kicker">ОНОВЛЕННЯ</div>
+          <h2>Відкрили новий хаб у Львові — +1200 м² складів</h2>
+          <p class="excerpt">Сьогодні ми офіційно відкрили новий логістичний хаб у Львові: сучасні стелажі, зона сортування та автоматизація процесів.</p>
+          <div class="meta">3 травня 2026 · Автор: Олена · Категорія: Офіси</div>
+          <div class="actions">
+            <button class="btn read-more" data-article="a1">Читати далі</button>
+            <button class="btn ghost">Поділитися</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Grid of articles -->
+      <div class="articles-grid" id="articlesGrid">
+        <!-- Article 1 -->
+        <article class="news-card" data-tags="логістика,склад" data-date="2026-05-01">
+          <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc" alt="Погрузка на складі">
+          <div class="card-body">
+            <h3>Оптимізували процеси на складі: +18% продуктивності</h3>
+            <p class="muted">Впровадили нову систему сортування та навчання персоналу.</p>
+            <div class="meta">1 травня 2026 · Операції</div>
+            <button class="btn small read-more" data-article="a2">Деталі</button>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="news-card" data-tags="міжнародні,маршрути" data-date="2026-04-28">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=def" alt="Траса з вантажівкою">
+          <div class="card-body">
+            <h3>Нові міжнародні рейси до Берліна та Варшави</h3>
+            <p class="muted">Розширили географію — тепер щоденні відправки до ЄС.</p>
+            <div class="meta">28 квітня 2026 · Маршрути</div>
+            <button class="btn small read-more" data-article="a3">Деталі</button>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="news-card" data-tags="команда,подія" data-date="2026-04-20">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi" alt="Церемонія відкриття">
+          <div class="card-body">
+            <h3>Грандіозне відкриття: церемонія та партнери</h3>
+            <p class="muted">Запрошені партнери, місцева влада та преса — коротко про подію.</p>
+            <div class="meta">20 квітня 2026 · Події</div>
+            <button class="btn small read-more" data-article="a4">Деталі</button>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="news-card" data-tags="технології,інфографіка" data-date="2026-04-10">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=jkl" alt="Інфографіка логістики">
+          <div class="card-body">
+            <h3>Інфографіка: як ми скоротили час доставки на 22%</h3>
+            <p class="muted">Короткий аналіз змін у маршрутизації та тарифах.</p>
+            <div class="meta">10 квітня 2026 · Аналітика</div>
+            <button class="btn small read-more" data-article="a5">Деталі</button>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="news-card" data-tags="клієнти,відгуки" data-date="2026-03-30">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=mno" alt="Щасливий клієнт">
+          <div class="card-body">
+            <h3>Клієнтський кейс: як ми доставили 10 тонн обладнання</h3>
+            <p class="muted">Реальна історія: терміни, упаковка, супровід.</p>
+            <div class="meta">30 березня 2026 · Кейси</div>
+            <button class="btn small read-more" data-article="a6">Деталі</button>
+          </div>
+        </article>
+
+        <!-- Article 6 -->
+        <article class="news-card" data-tags="безпека,склад" data-date="2026-03-15">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=pqr" alt="Оператор">
+          <div class="card-body">
+            <h3>Нове обладнання для безпечного завантаження</h3>
+            <p class="muted">Інвестиції в техніку та тренінги для операторів.</p>
+            <div class="meta">15 березня 2026 · Безпека</div>
+            <button class="btn small read-more" data-article="a7">Деталі</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Load more -->
+      <div class="load-more-wrap">
+        <button id="loadMore" class="btn">Показати ще</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- Ліва колонка -->
+    <div class="footer-column">
+      <a href="new_info.html"><p>Новини в компанії</p></a>
+      <a href="popular_faq.html"><p>Популярні запитання</p></a>
+    </div>
+
+    <!-- Права колонка -->
+    <div class="footer-column">
+      <p>+380 (67) 241-13-55</p>
+      <p>+380 (95) 134-23-42</p>
+    </div>
+
+    <div class="footer-column">
+      <p>TrackGoInfo@gmail.com</p>
+      <p>TrackGo@gmail.com</p>
+    </div>
+
+    <div class="footer-column">
+      <p>м. Львів, вул.Транспортна, 12</p>
+      <p>м. Київ, вул Крайняська, 7</p>
+    </div>
+      
+    <!-- Соцмережі -->
+    <div class="footer-column">
+      <img src="icons/image.png" alt="telegram">
+      <img src="icons/image copy.png" alt="instagram">
+      <img src="icons/image copy 2.png" alt="facebook">
+      <img src="icons/image copy 3.png" alt="viber">
+    </div>
+  </div>
+
+  <!-- Копірайт -->
+  <div class="footer-bottom">
+    <p>© 2026 TrackGo</p>
+  </div>
+</footer>
+
+<script src="js/burger.js"></script>
+ <script src="js/login.js"></script>
+</body>
+</html>

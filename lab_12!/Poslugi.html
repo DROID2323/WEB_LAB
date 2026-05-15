@@ -19,17 +19,75 @@
       <a href="routes.html">Маршрути</a>
     </nav>
 
-    <div class="right-menu">
-      <a href="#">UA</a>
+   <div class="right-menu">
+      <button class="burger" aria-label="Відкрити меню" aria-expanded="false">☰</button>
       <a href="#" class="button1" id="authLink">Увійти | Зареєструватися</a>
-    </div> 
+    </div>
   </header>
 <body>
-    <section class="page-hero">
-  <h1><b>НАШІ ПОСЛУГИ </b></h1>
-</section>
 
-<section class="services-grid">
+
+<!-- Модальне вікно -->
+<div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content" role="document">
+    <button id="closeModal" class="close" aria-label="Закрити модальне вікно">&times;</button>
+
+    <!-- Таби керування -->
+    <div class="auth-tabs" role="tablist" aria-label="Авторизація">
+      <button class="tab-btn active" data-target="loginPanel" role="tab" aria-selected="true" aria-controls="loginPanel">Увійти</button>
+      <button class="tab-btn" data-target="registerPanel" role="tab" aria-selected="false" aria-controls="registerPanel">Зареєструватись</button>
+    </div>
+
+    <!-- Контейнер форм -->
+    <div class="auth-forms">
+
+      <!-- Логін -->
+      <div id="loginPanel" class="panel" role="tabpanel" aria-hidden="false">
+        <h2>Увійти</h2>
+        <form id="loginForm" novalidate>
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" name="email" required autocomplete="email">
+          <label for="loginPassword">Пароль</label>
+          <input id="loginPassword" type="password" name="password" required autocomplete="current-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Увійти</button>
+            <button type="button" class="btn link" data-switch="registerPanel">Немає акаунту? Зареєструватись</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Реєстрація -->
+      <div id="registerPanel" class="panel hidden" role="tabpanel" aria-hidden="true">
+        <h2>Зареєструватись</h2>
+        <form id="registerForm" novalidate>
+          <label for="regName">Ім’я</label>
+          <input id="regName" type="text" name="name" required autocomplete="name">
+          <label for="regEmail">Email</label>
+          <input id="regEmail" type="email" name="email" required autocomplete="email">
+          <label for="regPassword">Пароль</label>
+          <input id="regPassword" type="password" name="password" required autocomplete="new-password">
+          <div class="panel-actions">
+            <button type="submit" class="btn primary">Зареєструватись</button>
+            <button type="button" class="btn link" data-switch="loginPanel">Вже є акаунт? Увійти</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="page-hero">
+  <h1><b>НАШІ ПОСЛУГИ </b></h1>
+</div>
+<div class="services-wrap">
+<div class="services-grid">
+ <div class="service-card">
+    <img src="https://tse2.mm.bing.net/th/id/OIP.wBglDuqxrvr01OhiEatVrAHaE7?r=0&w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Експрес-доставка">
+    <h3>Експрес-доставка</h3>
+    <p>Доставимо ваш вантаж у той самий день.</p>
+  </div>
   <div class="service-card">
     <img src="https://moving-expert.kyiv.ua/images/seo%20category%20text/main.webp?1700060593123" alt="Вантажні перевезення">
     <h3>Вантажні перевезення</h3>
@@ -46,14 +104,54 @@
     <p>Доставка за кордон з митним супроводом.</p>
   </div>
   <div class="service-card">
-    <img src="https://tse2.mm.bing.net/th/id/OIP.wBglDuqxrvr01OhiEatVrAHaE7?r=0&w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Експрес-доставка">
-    <h3>Експрес-доставка</h3>
-    <p>Доставимо ваш вантаж у той самий день.</p>
+    <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/KG/PW/DK/9606146/mea-attestation-service-500x500.jpg"alt="Митне оформлення документів">
+    <h3>Митне оформлення </h3>
+    <p>Підготовка документів, декларування та супровід на кордоні .</p>
   </div>
-</section>
+  <div class="service-card">
+    <img src="https://saveprosolutions.com/storage/pages/130/image/proekt.png"alt="Проектна логістика важкі вантажі">
+    <h3>Проектна логістика</h3>
+    <p>Перевезення нестандартних і важких вантажів: спецтехніка, супровід.</p>
+  </div>
+</div>
+</div>
+
+  <div class="steps">
+    <h1 class="steps-title"><b>Як замовити ?</b></h1>
+    <div class="step">
+      <div class="num">1</div>
+      <div class="step-body">
+        <div class="step-title">Заявка</div>
+        <div class="step-text">Заповнюєш форму або дзвониш — вказуєш маршрут і вагу.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div class="step-body">
+        <div class="step-title">Підбір</div>
+        <div class="step-text">Підбираємо транспорт і тариф.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div class="step-body">
+        <div class="step-title">Відправка</div>
+        <div class="step-text">Відправляємо і даємо трек‑номер.</div>
+      </div>
+    </div>
+  </div>
+
+<!-- Sticky CTA -->
+<div class="sticky" id="sticky">
+  <div class="sticky-text">Потрібна швидка доставка?</div>
+  <button class="btn">Замовити</button>
+</div>
 
 
-<section class="prices-table">
+<div class="prices-table">
+  <h1><b>Наші Тарифи</b></h1> 
   <table>
     <thead>
       <tr>
@@ -100,7 +198,7 @@
       </tr>
     </tbody>
   </table>
-</section>
+</div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -108,8 +206,8 @@
 
     <!-- Ліва колонка -->
     <div class="footer-column">
-      <a href="popular_faq .html"><p>Новини в компанії</p></a>
-      <a href="popular_faq .html"><p>Популярні запитання</p></a>
+      <a href="new_info.html"><p>Новини в компанії</p></a>
+      <a href="popular_faq.html"><p>Популярні запитання</p></a>
     </div>
 
     <!-- Права колонка -->
@@ -142,7 +240,8 @@
     <p>© 2026 TrackGo</p>
   </div>
 </footer>
-
+<script src="js/burger.js"></script>
+<script src="js/login.js"></script>
 
 </body>
 </html>
