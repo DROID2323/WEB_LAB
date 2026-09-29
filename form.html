@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запропонувати місто — Мої 3 найкращі міста світу</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Запропонувати місто</h1>
+        <nav>
+            <a href="index.html">Головна</a> |
+            <a href="city-morshyn.html">Моршин</a> |
+            <a href="city-lviv.html">Львів</a> |
+            <a href="city-kyiv.html">Київ</a> |
+            <a href="form.html">Запропонувати місто</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Запропонувати місто для наступного рейтингу</h2>
+        <form method="get" action="">
+            <p>
+                <label for="name">Ваше ім'я:</label><br>
+                <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </p>
+            <p>
+                <label for="city">Назва міста:</label><br>
+                <input type="text" id="city" name="city" required>
+            </p>
+            <p>
+                <label for="country">Країна:</label><br>
+                <select id="country" name="country" required>
+                    <option value="">— оберіть країну —</option>
+                    <option value="ua">Україна</option>
+                    <option value="pl">Польща</option>
+                    <option value="it">Італія</option>
+                    <option value="fr">Франція</option>
+                    <option value="other">Інша</option>
+                </select>
+            </p>
+            <fieldset>
+                <legend>Тип відпочинку</legend>
+                <input type="radio" id="t-culture" name="type" value="culture" checked>
+                <label for="t-culture">Культурний</label>
+                <input type="radio" id="t-rest" name="type" value="rest">
+                <label for="t-rest">Спокійний відпочинок</label>
+                <input type="radio" id="t-active" name="type" value="active">
+                <label for="t-active">Активний</label>
+            </fieldset>
+            <p>
+                <label for="reason">Чому варто відвідати це місто?</label><br>
+                <textarea id="reason" name="reason" rows="5" cols="40" required></textarea>
+            </p>
+            <p>
+                <input type="checkbox" id="agree" name="agree" required>
+                <label for="agree">Погоджуюсь на обробку введених даних</label>
+            </p>
+            <button type="submit">Надіслати</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>Автор: [Гошовський Дмитро], група [КН-41]. Лабораторна робота №1 з WEB-програмування, 2026.</p>
+    </footer>
+</body>
+</html>

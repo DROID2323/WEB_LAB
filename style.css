@@ -1,0 +1,86 @@
+:root {
+    --black: #121212;
+    --beige: #f2e8d5;
+    --beige-dark: #e3d5b8;
+    --gold: #c9a227;
+    --gold-dark: #8a6d10;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    background: var(--beige);
+    color: var(--black);
+}
+
+header, footer {
+    background: var(--black);
+    color: var(--gold);
+    text-align: center;
+    padding: 20px;
+}
+
+header { border-bottom: 3px solid var(--gold); }
+footer { border-top: 3px solid var(--gold); font-size: 0.9em; }
+
+header h1 { margin: 0 0 10px; }
+
+nav a {
+    color: var(--beige);
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+nav a:hover { color: var(--gold); }
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2, h3 {
+    color: var(--black);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 4px;
+}
+
+article {
+    background: var(--beige-dark);
+    border-left: 4px solid var(--gold);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid var(--black);
+}
+
+main a { color: var(--gold-dark); font-weight: bold; }
+main a:hover { color: var(--black); }
+
+input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: 8px;
+    border: 2px solid var(--black);
+    background: #fffaf0;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+fieldset { border: 2px solid var(--gold); margin-bottom: 15px; }
+
+button {
+    background: var(--black);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 10px 24px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover { background: var(--gold); color: var(--black); }
