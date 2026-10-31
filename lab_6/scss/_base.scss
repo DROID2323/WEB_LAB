@@ -1,0 +1,90 @@
+// ============================================================
+// _base.scss — reset, типографіка, зображення, елементи форм
+// ============================================================
+@use "variables" as v;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: v.$color-text;
+  background: v.$color-bg;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 v.$space-sm;
+  color: v.$color-text;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+// Селектор елемента — найнижча специфічність (0,0,1)
+p {
+  margin: 0;
+  color: darkslategray;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius;
+  background: v.$color-white;
+  color: v.$color-text;
+
+  &:focus {
+    outline: 2px solid v.$color-primary;
+    border-color: v.$color-primary;
+  }
+}
+
+// Селектор атрибута
+input[type="email"] {
+  border-color: #8bb8e8;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}

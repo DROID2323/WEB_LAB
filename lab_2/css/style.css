@@ -1,0 +1,319 @@
+/* ============================================================
+   Акустична варта — Лабораторна робота №2 (HTML/CSS)
+   ============================================================ */
+
+/* ---------- 1. Універсальний селектор (скидання + box-sizing) ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- 2. Селектори елементів + групування ---------- */
+body {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1c2b3a;
+  background: #fbfcfd;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0b1f3a;
+}
+
+h2 { font-size: 26px; margin-bottom: 16px; }
+h3 { font-size: 18px; margin-bottom: 8px; }
+
+/* Селектор елемента p — найнижча специфічність (0,0,1) */
+p {
+  color: darkslategray;
+  font-size: 15px;
+}
+
+a { text-decoration: none; }
+
+/* ---------- 3. Header та навігація (display: inline / inline-block) ---------- */
+.site-header {
+  display: block;
+  padding: 14px 56px;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e8ee;
+  overflow: hidden;
+}
+
+.brand {
+  float: left;
+}
+
+.brand-text { display: inline-block; vertical-align: middle; }
+.brand-title { font-size: 26px; }
+.brand-slogan { font-size: 14px; color: #5b6b7b; }
+
+/* Декоративний елемент датчика + transform: rotate() / scale() */
+.sensor-decor {
+  display: inline-block;
+  vertical-align: middle;
+  width: 34px;
+  height: 34px;
+  margin-right: 12px;
+  border: 3px solid #1a8a3c;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1a8a3c 30%, transparent 32%);
+  transform: rotate(-15deg) scale(0.95);
+  transition: transform 0.4s ease;
+}
+.sensor-decor:hover { transform: rotate(15deg) scale(1.15); }
+
+.main-nav {
+  float: right;
+  margin-top: 10px;
+}
+
+.nav-link {
+  display: inline;               /* inline: розмір за змістом, margin по вертикалі не діє */
+  margin-left: 28px;
+  padding-bottom: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0b1f3a;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-link:hover { color: #1a8a3c; }
+.nav-link.active { color: #1a8a3c; border-bottom-color: #1a8a3c; }
+
+/* ---------- 4. Вступний блок (Backgrounds) ---------- */
+.intro {
+  display: block;
+  height: 292px;
+  padding: 48px 56px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 35%, rgba(255,255,255,0) 70%),
+    url("../images/hero.jpg") center 60% / cover no-repeat;
+}
+
+.intro-title {
+  width: 520px;
+  max-width: 100%;
+  margin-bottom: 14px;
+  font-size: 40px;
+  line-height: 1.15;
+}
+.intro p { font-size: 17px; line-height: 1.5; }
+
+/* ---------- 5. Кнопка + transition + hover (без JS) ---------- */
+.btn {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  background: #1a8a3c;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn:hover {
+  background: #0b5d9e;           /* при наведенні кнопка змінює колір */
+  transform: translateY(-2px);
+}
+
+/* ---------- 6. Секції ---------- */
+.page-section {
+  padding: 28px 56px 8px;
+}
+
+/* ---------- 7. Картки: спільний клас .card + display: inline-block ---------- */
+.card-list {
+  font-size: 0;                  /* прибирає пробіли між inline-block елементами */
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 18px 20px;
+  border: 1px solid #dde5ee;
+  border-radius: 8px;
+  background: #f6f9fc;
+  font-size: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(11, 31, 58, 0.12);
+  border-color: #1a8a3c;
+}
+.card:last-child { margin-right: 0; }
+
+/* Картка вимірювання: Box Model + box-sizing: border-box */
+.measure-card {
+  box-sizing: border-box;
+  width: calc(20% - 12.8px);     /* 5 карток в ряд */
+  min-height: 124px;
+  padding: 16px 16px;
+  border: 1px solid #dde5ee;
+  margin-right: 16px;
+}
+
+.service-card {
+  width: calc(25% - 12px);       /* 4 картки в ряд */
+  height: 130px;
+}
+
+.card-label { font-size: 14px; color: #5b6b7b; }
+.card-value { margin: 4px 0; font-size: 18px; font-weight: 700; line-height: 1.25; color: #0b1f3a; }
+.card-note  { font-size: 13px; color: #5b6b7b; }
+
+/* ---------- 8. Бейдж статусу ---------- */
+.badge {
+  display: block;
+  width: 100%;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: left;
+}
+.badge-ok { background: #d9f2de; color: #1e7a38; }
+
+/* ---------- 9. Попередження: position relative + absolute ---------- */
+.warning {
+  position: relative;            /* контекст позиціонування для .point-mark */
+  margin: 8px 56px 8px;
+  padding: 20px 24px;
+  border: 1px solid #f2a7a7;
+  border-radius: 6px;
+  background: #fde8e8;
+}
+
+.point-mark {
+  position: absolute;            /* маленька позначка статусу в куті блока */
+  top: 12px;
+  right: 16px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: #c62828;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.warning-title { margin-bottom: 4px; font-size: 24px; color: #e00000; }
+
+/* ---------- 10. Навмисний конфлікт правил: cascade + specificity ----------
+   Три правила діють на один елемент <p id="warning-text" class="warning-text">:
+     p             { color: darkslategray }  — специфічність (0,0,1)
+     .warning-text { color: #7a1f1f }        — специфічність (0,1,0)
+     #warning-text { color: #b3261e }        — специфічність (1,0,0)  ← переможе
+   У DevTools два перших правила будуть перекреслені.
+   Окремо: два правила однакової специфічності — перемагає те, що нижче в файлі. */
+.warning-text { color: #7a1f1f; }
+#warning-text { color: #b3261e; font-size: 15px; }
+
+.log-table .status-ok  { color: #1e7a38; font-weight: 600; }
+.log-table .status-bad { color: #d00000; font-weight: 600; }
+.log-table .status-bad { color: #e00000; }  /* однакова специфічність — виграє останнє */
+
+/* ---------- 11. Таблиця вимірювань ---------- */
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #dde5ee;
+  background: #ffffff;
+  font-size: 15px;
+}
+
+.log-table th, .log-table td {
+  padding: 10px 16px;
+  border: 1px solid #dde5ee;
+  text-align: left;
+}
+
+.log-table th { background: #e8eef5; color: #0b1f3a; font-weight: 600; }
+.log-table td { color: #1c2b3a; }
+.level { font-weight: 600; }
+.row-alert .level { color: #e00000; }
+
+/* ---------- 12. Форма (Colors, Borders, селектори атрибутів) ---------- */
+.section-hint { margin-bottom: 14px; color: #5b6b7b; }
+
+.order-form { font-size: 0; }
+
+.form-col { display: inline-block; vertical-align: top; font-size: 0; }
+.form-col-main { width: 66%; }
+.form-col-side { width: 34%; padding-left: 28px; }
+
+.form-field {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  padding-right: 18px;
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+.form-col-side .form-field { display: block; width: 100%; padding-right: 0; }
+
+label { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 500; }
+.required { color: #d00000; }
+
+input, select, textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  color: #1c2b3a;
+}
+
+/* Селектори атрибутів */
+input[type="email"] { border-color: #8bb8e8; }
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus { outline: 2px solid #1a8a3c; border-color: #1a8a3c; }
+a[href^="#"] { cursor: pointer; }
+
+textarea { height: 138px; resize: vertical; }
+
+/* ---------- 13. Footer ---------- */
+.site-footer {
+  display: block;
+  margin-top: 36px;
+  padding: 28px 56px;
+  background: #1f2a37;
+  overflow: hidden;
+}
+.footer-info  { float: left; }
+.footer-links { float: right; text-align: right; }
+
+.footer-title  { font-size: 18px; font-weight: 700; color: #ffffff; }
+.footer-slogan, .footer-copy { color: #aab6c4; font-size: 14px; }
+.footer-links nav { margin-bottom: 10px; }
+.footer-links a { margin-left: 22px; color: #ffffff; font-size: 14px; }
+.footer-links a:hover { color: #6fd08c; }
+
+/* ---------- 14. Адаптивність (проста) ---------- */
+@media (max-width: 900px) {
+  .site-header, .page-section, .intro, .site-footer { padding-left: 20px; padding-right: 20px; }
+  .warning { margin-left: 20px; margin-right: 20px; }
+  .brand, .main-nav, .footer-info, .footer-links { float: none; }
+  .main-nav { margin-top: 12px; }
+  .nav-link { margin: 0 14px 0 0; }
+  .intro { height: auto; }
+  .intro-title { font-size: 30px; }
+  .measure-card, .service-card { width: 100%; margin-right: 0; height: auto; }
+  .form-col-main, .form-col-side { width: 100%; padding-left: 0; }
+  .form-field { width: 100%; padding-right: 0; }
+  .footer-links { text-align: left; margin-top: 14px; }
+  .footer-links a { margin: 0 16px 0 0; }
+}

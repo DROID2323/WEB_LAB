@@ -1,0 +1,274 @@
+// ============================================================
+// _components.scss — бренд, навігація, кнопка, картки, warning,
+// таблиця, поля форми, текст footer
+// ============================================================
+@use "variables" as v;
+@use "mixins" as m;
+
+// ---------- Бренд ----------
+.brand {
+  display: flex;
+  align-items: center;
+  gap: v.$space-md;
+
+  // Декоративний елемент датчика (transform)
+  &__icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 3px solid v.$color-primary;
+    border-radius: 50%;
+    background: radial-gradient(circle, v.$color-primary 30%, transparent 32%);
+    transform: rotate(-15deg) scale(0.95);
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: rotate(15deg) scale(1.15);
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__slogan {
+    font-size: 0.85rem;
+    color: v.$color-muted;
+  }
+}
+
+// ---------- Навігація (Flexbox) ----------
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-sm v.$space-lg;
+
+  &__link {
+    padding-block: 6px;
+    border-bottom: 2px solid transparent;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color v.$transition, border-color v.$transition;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+
+    &--active {
+      color: v.$color-primary;
+      border-bottom-color: v.$color-primary;
+    }
+  }
+}
+
+// ---------- Кнопка ----------
+.btn {
+  @include m.flex-center;
+  display: inline-flex;
+  padding: 12px 24px;
+  border: none;
+  border-radius: v.$radius;
+  background: v.$color-primary;
+  color: v.$color-white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background v.$transition, transform v.$transition;
+
+  &:hover {
+    background: v.$color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
+
+.hero .btn {
+  margin-top: v.$space-lg;
+}
+
+// ---------- Hero: адаптивна типографіка (clamp) ----------
+.hero h1 {
+  font-size: clamp(1.8rem, 4.2vw, 2.75rem);
+  font-weight: 800;
+}
+
+// ---------- Картка (Flexbox всередині Grid) ----------
+.card {
+  @include m.card-surface;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-xs;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: v.$shadow-hover;
+    border-color: v.$color-primary;
+  }
+
+  &__label,
+  &__note {
+    font-size: 0.85rem;
+    color: v.$color-muted;
+  }
+
+  &__value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: v.$color-text;
+  }
+}
+
+.badge {
+  padding: 3px v.$space-sm;
+  border-radius: v.$space-xs;
+  font-size: 0.85rem;
+
+  &--ok {
+    background: v.$color-success-bg;
+    color: v.$color-success;
+  }
+}
+
+// ---------- Попередження: position relative + absolute ----------
+.warning {
+  @include m.container;
+  position: relative;
+  margin-block: v.$space-lg;
+  padding: 20px v.$space-lg;
+  border: 1px solid v.$color-danger-border;
+  border-radius: v.$radius;
+  background: v.$color-danger-bg;
+
+  &__mark {
+    position: absolute;
+    top: 12px;
+    right: v.$space-md;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: v.$color-danger;
+    color: v.$color-white;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  &__title {
+    margin: 0 0 v.$space-xs;
+    font-size: 1.5rem;
+    color: v.$color-danger;
+  }
+}
+
+// Конфлікт правил (cascade + specificity), як у лабораторній №2:
+//   p                 -> (0,0,1) darkslategray
+//   .warning__text    -> (0,1,0)
+//   #warning-text     -> (1,0,0)  <- перемагає
+.warning__text {
+  color: #7a1f1f;
+}
+
+#warning-text {
+  color: v.$color-danger-dark;
+}
+
+// ---------- Таблиця: wrapper з overflow-x ----------
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius;
+  background: v.$color-white;
+}
+
+.log-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 10px v.$space-md;
+    border-bottom: 1px solid v.$color-border;
+    text-align: left;
+  }
+
+  th {
+    background: v.$color-table-head;
+    font-weight: 600;
+  }
+
+  &__level {
+    font-weight: 600;
+
+    &--bad {
+      color: v.$color-danger;
+    }
+  }
+
+  &__status {
+    font-weight: 600;
+
+    &--ok {
+      color: v.$color-success;
+    }
+
+    &--bad {
+      color: v.$color-danger;
+    }
+  }
+}
+
+// ---------- Поля форми ----------
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-xs;
+
+  &__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  &__required {
+    color: v.$color-danger;
+  }
+
+  &--grow textarea {
+    flex: 1;
+    min-height: 140px;
+  }
+}
+
+.section-hint {
+  margin-bottom: v.$space-md;
+  color: v.$color-muted;
+}
+
+// ---------- Footer: текст ----------
+.footer {
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: v.$color-white;
+  }
+
+  &__slogan,
+  &__copy {
+    font-size: 0.85rem;
+    color: v.$color-footer-text;
+  }
+
+  &__nav a {
+    font-size: 0.9rem;
+    transition: color v.$transition;
+
+    &:hover {
+      color: #6fd08c;
+    }
+  }
+}
