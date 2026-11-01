@@ -8,9 +8,7 @@
 
 ## 🔗 Живий сайт
 
-**👉 [https://USERNAME.github.io/my-best-cities/](https://USERNAME.github.io/my-best-cities/)**
-
-*(замінити `USERNAME` на свій GitHub username)*
+**👉 [https://droid2323.github.io/WEB_LAB/lab_1](https://droid2323.github.io/WEB_LAB/lab_1)**
 
 ---
 
@@ -90,8 +88,9 @@ git push -u origin main
 1. GitHub → репозиторій → **Settings → Pages**
 2. Source: **Deploy from a branch**
 3. Branch: `main`, папка: `/ (root)` → **Save**
-4. Сайт буде доступний за: `https://USERNAME.github.io/my-best-cities/`
-
+4. Сайт буде доступний за: **👉 [https://droid2323.github.io/WEB_LAB/lab_1](https://droid2323.github.io/WEB_LAB/lab_1)**
 ---
+
+## Всі інші роботи: **👉 [https://droid2323.github.io/WEB_LAB/](https://droid2323.github.io/WEB_LAB/)**
 
 *Лабораторна робота №1 · WEB-програмування · КН-41 · 2026*
