@@ -26,7 +26,7 @@ class MonitoringSystem {
   }
 
   getCriticalSensors() {
-    return this.sensors.filter(s => s.getStatus() === "critical");
+    return this.sensors.filter(s => s.getStatus().startsWith("critical"));
   }
 
   getAverageNoiseLevel() {

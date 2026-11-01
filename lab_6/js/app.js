@@ -4,7 +4,7 @@ import { NoiseMeasurement } from "./models/NoiseMeasurement.js";
 import { NoiseSensor, MobileNoiseSensor } from "./models/NoiseSensor.js";
 import { MonitoringSystem } from "./services/MonitoringSystem.js";
 
-// ===== Початкові дані =====
+// ===== Початкові дані (лаб. 5) =====
 const sensorsData = [
   { id: "NS-01", district: "Галицький",      location: "просп. Свободи",   noiseLevel: 58 },
   { id: "NS-02", district: "Франківський",   location: "вул. Наукова",     noiseLevel: 74 },
@@ -55,7 +55,7 @@ console.log("needsCharging:", mobile.needsCharging());
 console.log("instanceof NoiseSensor:", mobile instanceof NoiseSensor);
 console.groupEnd();
 
-// ===== DOM =====
+// ===== DOM: сітка датчиків (лаб. 5) =====
 function renderSensorCard(sensor) {
   const status = sensor.getStatus().split(" ")[0];
   const card = document.createElement("div");
@@ -83,32 +83,19 @@ function renderSensors() {
   if (critEl) critEl.textContent = system.getCriticalSensors().length;
 }
 
-document.addEventListener("DOMContentLoaded", renderSensors);
-
-
-
 // ===== Лабораторна 6: Активні сенсори =====
 
 const sensorsLab6 = [
-  { id: "NS-01", district: "Галицький",      location: "просп. Свободи, 14",    noiseLevel: 52, status: "normal"   },
-  { id: "NS-02", district: "Франківський",   location: "вул. Наукова, 8",       noiseLevel: 68, status: "warning"  },
-  { id: "NS-03", district: "Шевченківський", location: "просп. Чорновола, 21",  noiseLevel: 83, status: "critical" },
-  { id: "NS-04", district: "Сихівський",     location: "вул. Зелена, 102",      noiseLevel: 49, status: "normal"   },
-  { id: "NS-05", district: "Личаківський",   location: "вул. Пасічна, 30",      noiseLevel: 71, status: "warning"  },
-  { id: "NS-06", district: "Залізничний",    location: "вул. Городоцька, 155",  noiseLevel: 86, status: "critical" },
+  { id: "NS-01", district: "Галицький",      location: "просп. Свободи, 14",   noiseLevel: 52, status: "normal"   },
+  { id: "NS-02", district: "Франківський",   location: "вул. Наукова, 8",      noiseLevel: 68, status: "warning"  },
+  { id: "NS-03", district: "Шевченківський", location: "просп. Чорновола, 21", noiseLevel: 83, status: "critical" },
+  { id: "NS-04", district: "Сихівський",     location: "вул. Зелена, 102",     noiseLevel: 49, status: "normal"   },
+  { id: "NS-05", district: "Личаківський",   location: "вул. Пасічна, 30",     noiseLevel: 71, status: "warning"  },
+  { id: "NS-06", district: "Залізничний",    location: "вул. Городоцька, 155", noiseLevel: 86, status: "critical" },
 ];
 
-const STATUS_LABEL = {
-  normal:   "normal",
-  warning:  "warning",
-  critical: "critical",
-};
-
-const STATUS_COLOR = {
-  normal:   "#1f8a4c",
-  warning:  "#f59e0b",
-  critical: "#e53935",
-};
+const STATUS_LABEL = { normal: "Normal", warning: "Warning", critical: "Critical" };
+const STATUS_COLOR = { normal: "#1f8a4c", warning: "#f59e0b", critical: "#e53935" };
 
 function createSensorCard(sensor) {
   const color = STATUS_COLOR[sensor.status] || "#888";
@@ -154,9 +141,9 @@ function renderActiveSensors(sensorArray) {
 
 function applyFilters() {
   const districtFilter = document.querySelector("#district-filter");
-  const criticalFilter = document.querySelector("#critical-filter");
+  const criticalFilter  = document.querySelector("#critical-filter");
   const selectedDistrict = districtFilter.value;
-  const criticalOnly = criticalFilter.checked;
+  const criticalOnly     = criticalFilter.checked;
 
   const filtered = sensorsLab6.filter(sensor => {
     const matchesDistrict = selectedDistrict === "all" || sensor.district === selectedDistrict;
@@ -167,11 +154,38 @@ function applyFilters() {
   renderActiveSensors(filtered);
 }
 
+// ===== Модальне вікно форми =====
+const form  = document.querySelector(".form");
+const modal = document.getElementById("success-modal");
+
+if (form && modal) {
+  const text     = modal.querySelector(".modal__text");
+  const closeBtn = modal.querySelector(".modal__close");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    text.textContent = name
+      ? `Дякуємо, ${name}! Ми скоро з вами зв'яжемося для уточнення деталей.`
+      : "Дякуємо! Ми скоро з вами зв'яжемося для уточнення деталей.";
+    form.reset();
+    modal.showModal();
+  });
+
+  closeBtn.addEventListener("click", () => modal.close());
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+}
+
+// ===== Ініціалізація після завантаження DOM =====
 document.addEventListener("DOMContentLoaded", () => {
+  renderSensors();
   renderActiveSensors(sensorsLab6);
 
   const districtFilter = document.querySelector("#district-filter");
-  const criticalFilter = document.querySelector("#critical-filter");
+  const criticalFilter  = document.querySelector("#critical-filter");
   if (districtFilter) districtFilter.addEventListener("change", applyFilters);
   if (criticalFilter)  criticalFilter.addEventListener("change", applyFilters);
 });

@@ -1,6 +1,7 @@
 // ============================================================
 // _components.scss — бренд, навігація, кнопка, картки, warning,
-// таблиця, поля форми, текст footer
+// таблиця, поля форми, модальне вікно, текст footer,
+// секція «Активні сенсори» (Лаб. 6)
 // ============================================================
 @use "variables" as v;
 @use "mixins" as m;
@@ -11,7 +12,6 @@
   align-items: center;
   gap: v.$space-md;
 
-  // Декоративний елемент датчика (transform)
   &__icon {
     flex-shrink: 0;
     width: 34px;
@@ -58,11 +58,11 @@
     transition: color v.$transition, border-color v.$transition;
 
     &:hover {
-      color: v.$color-primary;
+      color: v.$color-primary-dark;
     }
 
     &--active {
-      color: v.$color-primary;
+      color: v.$color-primary-dark;
       border-bottom-color: v.$color-primary;
     }
   }
@@ -70,31 +70,25 @@
 
 // ---------- Кнопка ----------
 .btn {
-  @include m.flex-center;
-  display: inline-flex;
-  padding: 12px 24px;
+  @include m.flex-center(inline-flex);
+  padding: 12px v.$space-lg;
   border: none;
   border-radius: v.$radius;
-  background: v.$color-primary;
+  background: v.$color-primary-dark;
   color: v.$color-white;
   font-weight: 600;
   cursor: pointer;
   transition: background v.$transition, transform v.$transition;
 
   &:hover {
-    background: v.$color-primary-dark;
+    background: v.$color-primary-darker;
     transform: translateY(-2px);
   }
 }
 
+// ---------- Hero: кнопка і адаптивна типографіка (clamp) ----------
 .hero .btn {
   margin-top: v.$space-lg;
-}
-
-// ---------- Hero: адаптивна типографіка (clamp) ----------
-.hero h1 {
-  font-size: clamp(1.8rem, 4.2vw, 2.75rem);
-  font-weight: 800;
 }
 
 // ---------- Картка (Flexbox всередині Grid) ----------
@@ -125,13 +119,14 @@
 }
 
 .badge {
+  align-self: flex-start;
   padding: 3px v.$space-sm;
-  border-radius: v.$space-xs;
+  border-radius: v.$radius-sm;
   font-size: 0.85rem;
 
   &--ok {
     background: v.$color-success-bg;
-    color: v.$color-success;
+    color: v.$color-success-dark;
   }
 }
 
@@ -150,8 +145,8 @@
     top: 12px;
     right: v.$space-md;
     padding: 2px 10px;
-    border-radius: 12px;
-    background: v.$color-danger;
+    border-radius: v.$radius-pill;
+    background: v.$color-danger-dark;
     color: v.$color-white;
     font-size: 0.75rem;
     font-weight: 600;
@@ -162,16 +157,16 @@
     font-size: 1.5rem;
     color: v.$color-danger;
   }
+
+  &__text {
+    color: #7a1f1f;
+  }
 }
 
-// Конфлікт правил (cascade + specificity), як у лабораторній №2:
-//   p                 -> (0,0,1) darkslategray
-//   .warning__text    -> (0,1,0)
-//   #warning-text     -> (1,0,0)  <- перемагає
-.warning__text {
-  color: #7a1f1f;
-}
-
+// Конфлікт правил (cascade + specificity):
+//   p              -> (0,0,1)
+//   .warning__text -> (0,1,0)
+//   #warning-text  -> (1,0,0) <- перемагає
 #warning-text {
   color: v.$color-danger-dark;
 }
@@ -187,7 +182,7 @@
 
 .log-table {
   width: 100%;
-  min-width: 640px;
+  min-width: v.$table-min-width;
   border-collapse: collapse;
 
   th,
@@ -206,7 +201,7 @@
     font-weight: 600;
 
     &--bad {
-      color: v.$color-danger;
+      color: v.$color-danger-dark;
     }
   }
 
@@ -214,11 +209,11 @@
     font-weight: 600;
 
     &--ok {
-      color: v.$color-success;
+      color: v.$color-success-dark;
     }
 
     &--bad {
-      color: v.$color-danger;
+      color: v.$color-danger-dark;
     }
   }
 }
@@ -249,6 +244,41 @@
   color: v.$color-muted;
 }
 
+// ---------- Модальне вікно успішної відправки (<dialog>) ----------
+.modal {
+  width: min(100% - v.$container-gutter, v.$modal-max-width);
+  padding: 0;
+  border: none;
+  border-radius: v.$radius-lg;
+  background: v.$color-white;
+  box-shadow: v.$shadow-modal;
+  text-align: center;
+
+  &::backdrop {
+    background: v.$color-overlay;
+  }
+
+  &__body {
+    padding: v.$space-xl v.$space-lg v.$space-lg;
+  }
+
+  &__icon {
+    @include m.flex-center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto v.$space-md;
+    border-radius: 50%;
+    background: v.$color-success-bg;
+    color: v.$color-success-dark;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  &__text {
+    margin-bottom: v.$space-lg;
+  }
+}
+
 // ---------- Footer: текст ----------
 .footer {
   &__title {
@@ -268,7 +298,167 @@
     transition: color v.$transition;
 
     &:hover {
-      color: #6fd08c;
+      color: v.$color-primary-light;
     }
+  }
+}
+
+// ============================================================
+// Секція «Активні сенсори» — Лабораторна робота №6
+// ============================================================
+
+.active-sensors {
+  padding-block: v.$space-xl;
+}
+
+// ---------- Панель фільтрів ----------
+.sensor-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-md 2rem;
+  margin-bottom: v.$space-lg;
+  padding: 12px v.$space-md;
+  background: v.$color-surface;
+  border-radius: v.$radius;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-xs;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: v.$color-text;
+  }
+
+  &__select {
+    margin-top: v.$space-xs;
+    padding: 6px 10px;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius;
+    font-size: 0.9rem;
+    background: v.$color-white;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid v.$color-primary;
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: v.$color-text;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: v.$color-primary;
+  }
+
+  &__hint {
+    font-size: 0.78rem;
+    color: v.$color-muted;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+// ---------- Сітка карток сенсорів ----------
+.sensor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: v.$space-md;
+}
+
+// ---------- Картка активного сенсора ----------
+.active-sensor-card {
+  border-radius: v.$radius-lg;
+  background: v.$color-white;
+  border: 1px solid v.$color-border;
+  border-left: 4px solid v.$color-border;
+  box-shadow: 0 2px 8px rgba(20, 33, 61, 0.06);
+  transition: transform v.$transition, box-shadow v.$transition;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: v.$shadow-hover;
+  }
+
+  // Статуси — лівий бордер
+  &--normal   { border-left-color: v.$color-primary; }
+  &--warning  { border-left-color: #f59e0b; }
+  &--critical { border-left-color: v.$color-danger; }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px 6px;
+  }
+
+  &__id {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: v.$color-muted;
+    margin: 0;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 10px;
+    border-radius: v.$radius-pill;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    &--normal   { background: v.$color-success-bg;  color: v.$color-success-dark; }
+    &--warning  { background: #fef3cd;               color: #b45309; }
+    &--critical { background: v.$color-danger-bg;   color: v.$color-danger; }
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  &__body,
+  &__footer {
+    padding: 4px 14px 10px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.83rem;
+    color: #3d4f61;
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+
+  &__icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  &__footer {
+    border-top: 1px solid #edf2f7;
+    padding-top: 8px;
   }
 }

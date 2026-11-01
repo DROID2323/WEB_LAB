@@ -2,24 +2,34 @@
 // _variables.scss — дизайн-токени проєкту «Акустична варта»
 // ============================================================
 
-// Кольори
+// Кольори: бренд
 $color-primary: #1f8a4c;
 $color-primary-dark: #146c3a;
+$color-primary-darker: #0f5a30;
+$color-primary-light: #6fd08c;
+
+// Кольори: текст, поверхні, рамки
 $color-text: #14213d;
+$color-text-soft: #2f4f4f;
 $color-muted: #5f6b7a;
-$color-footer: #263746;
+$color-bg: #fbfcfd;
 $color-surface: #f4f8fb;
 $color-border: #d6e2ec;
+$color-white: #ffffff;
+$color-table-head: #e8eef5;
+
+// Кольори: footer
+$color-footer: #263746;
+$color-footer-text: #aab6c4;
+
+// Кольори: стани
 $color-success: #188a45;
+$color-success-dark: #0f6b33;
 $color-success-bg: #d9f2de;
 $color-danger: #e53935;
 $color-danger-dark: #b3261e;
 $color-danger-bg: #fde8e8;
 $color-danger-border: #f2a7a7;
-$color-bg: #fbfcfd;
-$color-white: #ffffff;
-$color-table-head: #e8eef5;
-$color-footer-text: #aab6c4;
 
 // Відступи
 $space-xs: 4px;
@@ -28,11 +38,23 @@ $space-md: 16px;
 $space-lg: 24px;
 $space-xl: 40px;
 
-// Контейнер, радіус, анімація
+// Контейнер, радіуси, розміри компонентів
 $container-max: 1200px;
+$container-gutter: 32px;
 $radius: 6px;
+$radius-sm: 4px;
+$radius-lg: 8px;
+$radius-pill: 12px;
+$card-padding: 16px 20px;
+$hero-image-height: 220px;
+$modal-max-width: 420px;
+$table-min-width: 640px;
+
+// Анімація та тіні
 $transition: 0.25s ease;
 $shadow-hover: 0 8px 18px rgba(20, 33, 61, 0.12);
+$shadow-modal: 0 16px 40px rgba(20, 33, 61, 0.25);
+$color-overlay: rgba(20, 33, 61, 0.55);
 
 // Breakpoints (Mobile First)
 $bp-tablet: 768px;
