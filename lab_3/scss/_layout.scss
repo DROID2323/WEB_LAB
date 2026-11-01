@@ -38,6 +38,16 @@
   grid-template-columns: 1fr;
   background: v.$color-bg;
 
+  // Адаптивна типографіка (clamp)
+  h1 {
+    font-size: clamp(1.8rem, 4.2vw, 2.75rem);
+    font-weight: 800;
+  }
+
+  .btn {
+    margin-top: v.$space-lg;
+  }
+
   &__content {
     align-self: center;
     padding: v.$space-xl v.$space-md;
@@ -45,7 +55,7 @@
 
   &__image {
     position: relative;
-    min-height: 220px;
+    min-height: v.$hero-image-height;
 
     img {
       position: absolute;
@@ -60,7 +70,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, v.$color-bg, rgba(251, 252, 253, 0) 30%);
+      background: linear-gradient(to bottom, v.$color-bg, transparent 30%);
     }
   }
 
@@ -73,12 +83,13 @@
     }
 
     &__image::after {
-      background: linear-gradient(to right, v.$color-bg, rgba(251, 252, 253, 0) 35%);
+      background: linear-gradient(to right, v.$color-bg, transparent 35%);
     }
   }
 }
 
 // ---------- Сітки карток (Grid) ----------
+// monitoring: 1 -> 2 -> 5 колонок, services: 1 -> 2 -> 4 колонки
 .monitoring-grid {
   @include m.responsive-grid(2, 5);
 }
