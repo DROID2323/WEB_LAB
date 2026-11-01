@@ -1,0 +1,7 @@
+// main.scss — точка входу (модульна структура @use)
+@use "variables";
+@use "mixins";
+@use "base";
+@use "layout";
+@use "components";
+@use "sensors";

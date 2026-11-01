@@ -1,0 +1,16 @@
+{
+  "name": "acoustic-watch",
+  "version": "1.0.0",
+  "description": "Лабораторна №8 — робота з даними з API на TypeScript",
+  "scripts": {
+    "sass": "sass --watch scss/main.scss:css/main.css",
+    "build:css": "sass scss/main.scss css/main.css --no-source-map",
+    "build:ts": "tsc",
+    "build": "npm run build:css && npm run build:ts",
+    "watch:ts": "tsc --watch"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,309 @@
+// ============================================================
+// _sensors.scss — картки сенсорів
+//   лаб. 5: мережа датчиків (JS-модель)
+//   лаб. 6: активні сенсори з фільтрами
+//   лаб. 8: сенсори з MockAPI (TypeScript)
+// ============================================================
+@use "variables" as v;
+@use "mixins" as m;
+
+// ---------- Лаб. 5: статистика та сітка датчиків ----------
+.monitoring-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-sm v.$space-lg;
+  margin-bottom: v.$space-md;
+  font-size: 0.95rem;
+  color: v.$color-muted;
+
+  strong {
+    font-weight: 700;
+    color: v.$color-text;
+  }
+}
+
+// ---------- Спільна сітка карток сенсорів (лаб. 5 і лаб. 8) ----------
+.sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: v.$space-md;
+}
+
+// Службове повідомлення в сітці: завантаження, порожній список, помилка
+.sensors-message {
+  grid-column: 1 / -1;
+  color: v.$color-muted;
+
+  &--error {
+    color: v.$color-danger-dark;
+  }
+}
+
+// ---------- Картка сенсора (лаб. 5: div-и з класом статусу; лаб. 8: h3 + p) ----------
+.sensor-card {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-xs;
+  padding: v.$card-padding;
+  border: 1px solid v.$color-border;
+  border-left: 4px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  background: v.$color-white;
+  box-shadow: v.$shadow-card;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: v.$shadow-card-hover;
+  }
+
+  // статуси лаб. 5
+  &.normal {
+    border-left-color: v.$color-primary;
+  }
+
+  &.warning {
+    border-left-color: v.$color-warning;
+  }
+
+  &.critical {
+    border-left-color: v.$color-danger;
+  }
+
+  // статуси лаб. 8 (поле status з API)
+  &--active {
+    border-left-color: v.$color-primary;
+  }
+
+  &--inactive {
+    border-left-color: v.$color-muted-light;
+  }
+
+  h3 {
+    margin-bottom: v.$space-xs;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: v.$color-text-body;
+  }
+}
+
+.sensor-id {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: v.$color-muted;
+}
+
+.sensor-district {
+  margin-bottom: v.$space-xs;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: v.$color-muted;
+}
+
+.sensor-level {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+  color: v.$color-text;
+}
+
+.sensor-status {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 2px 10px;
+  border-radius: v.$radius-full;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: v.$color-white;
+
+  &--normal {
+    background: v.$color-primary-dark;
+  }
+
+  &--warning {
+    background: v.$color-warning;
+    color: v.$color-text;
+  }
+
+  &--critical {
+    background: v.$color-danger-dark;
+  }
+}
+
+// ---------- Лаб. 6: фільтри ----------
+.sensor-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-md v.$space-lg;
+  margin-bottom: v.$space-lg;
+  padding: 12px v.$space-md;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-xs;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: v.$color-text;
+  }
+
+  &__select {
+    margin-top: v.$space-xs;
+    padding: 6px 10px;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius;
+    background: v.$color-white;
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    &:focus {
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: v.$color-text;
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: v.$color-primary;
+  }
+
+  &__hint {
+    margin: 0;
+    font-size: 0.78rem;
+    color: v.$color-muted-light;
+  }
+}
+
+// ---------- Лаб. 6: список активних сенсорів ----------
+.sensor-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-md;
+
+  @include m.respond-to(v.$bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.active-sensor-card {
+  overflow: hidden;
+  border: 1px solid v.$color-border;
+  border-left: 4px solid v.$color-border;
+  border-radius: v.$radius-card;
+  background: v.$color-white;
+  box-shadow: v.$shadow-card;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: v.$shadow-card-hover;
+  }
+
+  &--normal {
+    border-left-color: v.$color-primary;
+  }
+
+  &--warning {
+    border-left-color: v.$color-warning;
+  }
+
+  &--critical {
+    border-left-color: v.$color-danger;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px 6px;
+  }
+
+  &__id {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: v.$color-muted;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 10px;
+    border-radius: v.$radius-full;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    &--normal {
+      background: v.$color-primary-bg;
+      color: v.$color-primary-dark;
+    }
+
+    &--warning {
+      background: v.$color-warning-bg;
+      color: v.$color-warning-dark;
+    }
+
+    &--critical {
+      background: v.$color-danger-bg;
+      color: v.$color-danger-dark;
+    }
+  }
+
+  &__dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  &__body,
+  &__footer {
+    padding: v.$space-xs 14px 10px;
+  }
+
+  &__footer {
+    padding-top: v.$space-sm;
+    border-top: 1px solid v.$color-divider;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin: v.$space-xs 0;
+    font-size: 0.83rem;
+    line-height: 1.4;
+    color: v.$color-text-body;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+}

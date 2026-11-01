@@ -1,0 +1,59 @@
+// ============================================================
+// _mixins.scss — повторювані патерни
+// ============================================================
+@use "variables" as v;
+
+// 1. Media query (Mobile First: min-width)
+@mixin respond-to($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// 2. Центрування вмісту (block або inline flex)
+@mixin flex-center($display: flex) {
+  display: $display;
+  justify-content: center;
+  align-items: center;
+}
+
+// 3. Контейнер сторінки
+@mixin container {
+  width: min(100% - v.$container-gutter, v.$container-max);
+  margin-inline: auto;
+}
+
+// 4. Адаптивна Grid-сітка: 1 колонка -> tablet -> desktop
+@mixin responsive-grid($tablet: 2, $desktop: 4, $gap: v.$space-md) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $gap;
+
+  @include respond-to(v.$bp-tablet) {
+    grid-template-columns: repeat($tablet, 1fr);
+  }
+
+  @include respond-to(v.$bp-desktop) {
+    grid-template-columns: repeat($desktop, 1fr);
+  }
+}
+
+// 5. Вигляд картки (рамка, фон, плавна анімація)
+@mixin card-surface {
+  padding: v.$card-padding;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  transition: transform v.$transition, box-shadow v.$transition, border-color v.$transition;
+}
+
+// 6. Відступ від лівого краю контейнера до краю екрана (hero на всю ширину)
+@mixin edge-gutter {
+  padding-inline-start: max(v.$space-md, calc((100% - v.$container-max) / 2));
+}
+
+// 7. Кільце фокуса для клавіатурної навігації
+@mixin focus-ring {
+  outline: 2px solid v.$color-primary;
+  outline-offset: 2px;
+}
