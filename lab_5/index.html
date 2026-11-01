@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Акустична варта — вимірювання рівня шуму, аналіз даних та акустичний моніторинг для житлових комплексів, офісів, підприємств і масових заходів.">
   <title>Акустична варта — професійний акустичний моніторинг</title>
   <link rel="stylesheet" href="css/main.css">
-  <script type="module" src="./js/models/NoiseMeasurement.js"></script>
-  <script type="module" src="./js/models/NoiseSensor.js"></script>
-  <script type="module" src="./js/services/MonitoringSystem.js"></script>
   <script type="module" src="./js/app.js"></script>
 </head>
 <body>
@@ -113,14 +111,14 @@
 
     <section id="log" class="section container">
       <h2>Останні вимірювання</h2>
-      <div class="table-wrapper">
+      <div class="table-wrapper" role="region" aria-label="Таблиця останніх вимірювань" tabindex="0">
         <table class="log-table">
           <thead>
             <tr>
-              <th>Дата і час</th>
-              <th>Місце</th>
-              <th>Рівень шуму</th>
-              <th>Статус</th>
+              <th scope="col">Дата і час</th>
+              <th scope="col">Місце</th>
+              <th scope="col">Рівень шуму</th>
+              <th scope="col">Статус</th>
             </tr>
           </thead>
           <tbody>
@@ -160,11 +158,11 @@
         <div class="form__fields">
           <div class="field">
             <label class="field__label" for="name">Ім'я <span class="field__required">*</span></label>
-            <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Ваше ім'я" required>
           </div>
           <div class="field">
             <label class="field__label" for="email">Email <span class="field__required">*</span></label>
-            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="example@email.com" required>
           </div>
           <div class="field">
             <label class="field__label" for="type">Тип об'єкта <span class="field__required">*</span></label>
@@ -209,6 +207,15 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="modal" id="success-modal" aria-labelledby="modal-title">
+    <div class="modal__body">
+      <div class="modal__icon" aria-hidden="true">✓</div>
+      <h2 class="modal__title" id="modal-title">Заявку успішно подано!</h2>
+      <p class="modal__text">Дякуємо! Ми скоро з вами зв'яжемося для уточнення деталей.</p>
+      <button type="button" class="btn modal__close">Гаразд</button>
+    </div>
+  </dialog>
 
 </body>
 </html>

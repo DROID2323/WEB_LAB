@@ -83,4 +83,30 @@ function renderSensors() {
   if (critEl) critEl.textContent = system.getCriticalSensors().length;
 }
 
-document.addEventListener("DOMContentLoaded", renderSensors);
+document.addEventListener("DOMContentLoaded", () => {
+  renderSensors();
+});
+// ===== Модальне вікно форми =====
+const form = document.querySelector(".form");
+const modal = document.getElementById("success-modal");
+
+if (form && modal) {
+  const text = modal.querySelector(".modal__text");
+  const closeBtn = modal.querySelector(".modal__close");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    text.textContent = name
+      ? `Дякуємо, ${name}! Ми скоро з вами зв'яжемося для уточнення деталей.`
+      : "Дякуємо! Ми скоро з вами зв'яжемося для уточнення деталей.";
+    form.reset();
+    modal.showModal();
+  });
+
+  closeBtn.addEventListener("click", () => modal.close());
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+}

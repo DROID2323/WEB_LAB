@@ -1,7 +1,7 @@
 {
   "name": "acoustic-watch",
   "version": "1.0.0",
-  "description": "Лабораторна №3 — адаптивна верстка (Flexbox, Grid, SCSS)",
+  "description": "Лабораторна №5 — проєктування системи класів у JavaScript",
   "scripts": {
     "sass": "sass --watch scss/main.scss:css/main.css",
     "build": "sass scss/main.scss css/main.css"
