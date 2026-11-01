@@ -2,6 +2,7 @@
 // _base.scss — reset, типографіка, зображення, елементи форм
 // ============================================================
 @use "variables" as v;
+@use "mixins" as m;
 
 *,
 *::before,
@@ -40,7 +41,7 @@ h3 {
 // Селектор елемента — найнижча специфічність (0,0,1)
 p {
   margin: 0;
-  color: darkslategray;
+  color: v.$color-text-soft;
 }
 
 a {
@@ -87,4 +88,21 @@ input[type="email"] {
 textarea {
   min-height: 120px;
   resize: vertical;
+}
+
+:focus-visible {
+  @include m.focus-ring;
+}
+
+// Повага до налаштування «зменшити анімацію»
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }
